@@ -1,0 +1,48 @@
+You are given a sorted unique integer array nums.
+A range [a,b] is the set of all integers from a to b (inclusive).
+Return the smallest sorted list of ranges that cover all the numbers in the array exactly. That 
+is, each element of nums is covered by exactly one of the ranges, and there is no integer x such 
+that x is in one of the ranges but not in nums.
+Each range [a,b] in the list should be output as:
+    "a->b" if a != b
+    "a" if a == b
+ 
+Example 1:
+
+Input: nums = [0,1,2,4,5,7]
+Output: ["0->2","4->5","7"]
+Explanation: The ranges are:
+[0,2] --> "0->2"
+[4,5] --> "4->5"
+[7,7] --> "7"
+Example 2:
+
+Input: nums = [0,2,3,4,6,8,9]
+Output: ["0","2->4","6","8->9"]
+Explanation: The ranges are:
+[0,0] --> "0"
+[2,4] --> "2->4"
+[6,6] --> "6"
+[8,9] --> "8->9"
+ 
+Constraints:
+
+0 <= nums.length <= 20
+-231 <= nums[i] <= 231 - 1
+All the values of nums are unique.
+nums is sorted in ascending order.
+
+--> ý tưởng:
+B1: Khởi tạo 
+- Khởi tạo [start] để giữ chỉ số bắt đầu của mỗi đoạn
+- Duyệt mảng từ trái sang phải ([i] từ 0 đến n-1)
+
+B2: Duyệt từng phần. Với mỗi phần tử nums[i]:
+- Kiểm tra xem nó có kết thúc của một đoạn liên tiếp không:
+    . Nếu i == n -1 (cuối cùng)
+    . Hoặc nums[i] + 1 khác num[i+1] -> Tức là đoạn kết thsc tại đây
+
+B3: Xử lý đoạn. Khi gặp kết thúc của 1 đoạn, ta xét:
+- Nếu start == i -> chỉ có 1 phần tử -> thêm "nums[start]"
+- Nếu start khác i -> có nhiều phần tử -> thêm "nums[start] -> nums[i]"
+=> sau đó gán start = i + 1 để bắt đầu đoạn mới. 
