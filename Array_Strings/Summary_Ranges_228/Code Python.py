@@ -11,7 +11,7 @@ class Solution:
                 if start == i:
                     result.append(str(nums[start]))
                 else:
-                    result.append(f"{nums[start]} -> {nums[i]}")
+                    result.append(f"{nums[start]}->{nums[i]}")
                 start = i + 1
         return result
 
