@@ -1,0 +1,25 @@
+Write a function to find the longest common prefix string amongst an array of strings.
+If there is no common prefix, return an empty string "".
+
+Example 1:
+
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+Example 2:
+
+Input: strs = ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+ 
+Constraints:
+
+1 <= strs.length <= 200
+0 <= strs[i].length <= 200
+strs[i] consists of only lowercase English letters if it is non-empty.
+
+Ý tưởng: Dùng cắt dần prefix
+- Gỉa sử từ đầu tiên là tiền tố chung dài nhất (prefix)
+- So sánh prefix đó với từng từ tiếp theo.
+- Nếu từ nào không bắt đầu bằng prefix, ta cắt bớt dần từng ký tự ở cuối prefix cho đến khi từ đó
+bắt đầu bằng prefix
+- Làm liên tục với tất cả các từ -> đến cuối cùng sẽ thu được prefix là tiền tố chung dài nhất.
