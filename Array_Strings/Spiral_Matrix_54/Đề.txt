@@ -1,0 +1,44 @@
+Given an m x n matrix, return all elements of the matrix in spiral order.
+Example 1:
+
+1-2-3
+    |
+4-5 6
+|   |
+7-8-9    
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+Example 2:
+
+1 - 2 - 3 - 4
+            |
+5 - 6 - 7 - 8
+|           |
+9 - 10 -11-12
+Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+ 
+Constraints:
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 10
+-100 <= matrix[i][j] <= 100
+
+Ý tưởng: Đi theo lớp (layer)
++ Mỗi vòng xoắn ốc là một lớp (layer) hình chữ nhật.
++ Với mỗi lớp:
+    .Đi qua phải ở hàng trên cùng.
+    .Đi xuống ở cột bên phải.
+    .Nếu còn hàng dưới, đi trái ở hàng dưới.
+    .Nếu còn cột bên trái, đi lên ở cột trái.
++ Sau đó thu hẹp phạm vị (top, bottom, left, right) để đi vào lớp tiếp theo
+
+// Python vs Java:
+| Đặc điểm                | Python                              | Java                                               |
+| ----------------------- | ----------------------------------- | -------------------------------------------------- |
+| Cú pháp                 | Ngắn gọn, dễ đọc                    | Dài dòng hơn, cần khai báo rõ ràng                 |
+| Danh sách               | `list` mặc định                     | Dùng `List<Integer>` (cần `ArrayList`)             |
+| Phạm vi mảng            | Không cần kiểm tra kích thước trước | Cần kiểm tra null và chiều dài                     |
+| Duyệt mảng              | Duyệt mảng dễ với `for in`          | Cần dùng `for (int i = ...)`                       |
+| Linh hoạt trong dữ liệu | Tự động kiểu hóa                    | Phải rõ kiểu dữ liệu (int\[]\[], List<Integer>...) |
