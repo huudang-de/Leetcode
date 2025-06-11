@@ -1,0 +1,47 @@
+from typing import Optional
+class ListNode:
+    def __init__ (self, val = 0, next = None):
+        self.val = val
+        self.next = next
+class Solution:
+    def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        current = head
+
+        while current:
+            prev = dummy
+            next_node = current.next
+
+            while prev.next and prev.next.val < current.val:
+                prev = prev.next
+            
+            current.next = prev.next
+            prev.next = current
+
+            current = next_node
+        return dummy.next
+# Hàm tiện ích để chuyển list -> linked list
+def create_linked_list(arr):
+    if not arr:
+        return None
+    head = ListNode(arr[0])
+    current = head
+    for value in arr[1:]:
+        current.next = ListNode(value)
+        current = current.next
+    return head
+
+# Hàm tiện ích để in linked list
+def print_linked_list(head):
+    res = []
+    while head:
+        res.append(head.val)
+        head = head.next
+    print(res)
+
+# Test
+arr = [64, 34, 25, 12, 22, 11, 90, 5]
+head = create_linked_list(arr)
+sol = Solution()
+sorted_head = sol.insertionSortList(head)
+print_linked_list(sorted_head)
